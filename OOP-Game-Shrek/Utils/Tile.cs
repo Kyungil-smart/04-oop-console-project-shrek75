@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Game_Shrek
 {
-    internal class Program
+    internal class Tile
     {
-        static void Main(string[] args)
-        {
-            while (SceneManager.Run());
-        }
     }
 }

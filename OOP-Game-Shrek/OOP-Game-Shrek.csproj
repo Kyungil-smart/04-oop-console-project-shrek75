@@ -43,8 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Objects\BaseObject.cs" />
+    <Compile Include="Scenes\BaseScene.cs" />
+    <Compile Include="Managers\ConsoleManager.cs" />
+    <Compile Include="Utils\ICollision.cs" />
+    <Compile Include="Utils\IInteract.cs" />
+    <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Utils\Inventory.cs" />
+    <Compile Include="Utils\Log.cs" />
+    <Compile Include="Managers\ObjectManager.cs" />
+    <Compile Include="Utils\ObservableProperty.cs" />
+    <Compile Include="Utils\Pos.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Managers\SceneManager.cs" />
+    <Compile Include="Utils\TextExtensions.cs" />
+    <Compile Include="Utils\TextList.cs" />
+    <Compile Include="Utils\Tile.cs" />
+    <Compile Include="Managers\TimeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
