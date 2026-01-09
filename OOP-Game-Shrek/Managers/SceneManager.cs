@@ -11,6 +11,7 @@ namespace OOP_Game_Shrek
         private static bool _quitRequested = false; // 게임종료 요청 플래그
         private static BaseScene _currentScene;     // 현재 실행중인 Scene
         private static BaseScene _previousScene;    // 이전에 실행되었던 Scene
+        private static TimeManager _timeManager = new TimeManager(); 
 
         /// <summary>
         /// SceneManager 에게 게임종료를 요청합니다.
@@ -26,6 +27,16 @@ namespace OOP_Game_Shrek
         /// </summary>
         public static bool Run()
         {
+            // InputManager.PollInput();
+
+            int n = _timeManager.GetUpdateTimes();
+            for(int i = 0; i< n;i++)
+            {
+                // OM.Update();
+            }
+
+            // OM.Render();
+
             if (_quitRequested) return false;
             return true;
         }
