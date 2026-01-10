@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Objects\BaseObject.cs" />
+    <Compile Include="Objects\OTestObj.cs" />
     <Compile Include="Scenes\BaseScene.cs" />
     <Compile Include="Managers\ConsoleManager.cs" />
+    <Compile Include="Scenes\SFirstScene.cs" />
     <Compile Include="Scenes\SGame.cs" />
     <Compile Include="Scenes\STitle.cs" />
     <Compile Include="Utils\ICollision.cs" />

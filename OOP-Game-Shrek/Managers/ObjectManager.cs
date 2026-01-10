@@ -38,10 +38,8 @@ namespace OOP_Game_Shrek
         // 삭제랑
 
 
-        // Update랑
-        // 충돌처리등등...
 
-
+        //오브젝트들 update랑 충돌처리 돌려주고, add요청 delete요청 처리해주기.
         public static void Update()
         {
             // 이미 충돌처리한 collisionObject의 인덱스를 세기위해
@@ -70,6 +68,18 @@ namespace OOP_Game_Shrek
                     target++;
                 }
             }
+
+            //add요청
+            ProcessObjAddRequest();
+
+            //delete요청
+        }
+
+        public static void Render()
+        {
+            foreach(BaseObject obj in _allObjList)
+                obj.Render();
+            //Flip(); 하면되고.
         }
     }
 }

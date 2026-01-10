@@ -23,8 +23,12 @@ namespace OOP_Game_Shrek
         long _lastUpdateTick = 0; // 마지막 Update 시점의 tick
         long _deltaTick = 0;     // 마지막 Update 이후 남은 tick
 
-        Stopwatch _timePerFrame;
-        //startNew를 언제하지
+        Stopwatch _timePerFrame; //tick측정을 위한 Stopwatch
+        public TimeManager()
+        {
+            _timePerFrame = Stopwatch.StartNew();
+        }
+
 
         /// <summary>
         /// Update를 할 타이밍인지 반환합니다. 내부적으로 deltaTick을 계산합니다.

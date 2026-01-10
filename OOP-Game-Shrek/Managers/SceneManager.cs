@@ -13,11 +13,19 @@ namespace OOP_Game_Shrek
         private static BaseScene _currentScene;     // 현재 실행중인 Scene
         private static BaseScene _previousScene;    // 이전에 실행되었던 Scene
         private static Type _requestedScene;   // 전환이 요청된 Scene
-        private static TimeManager _timeManager = new TimeManager();
+        private static TimeManager _timeManager;
 
 
         //Scene을 담아야하는데, 검색도 빨라야해서 key를 Type으로.
         static Dictionary<Type, BaseScene> _sceneList = new Dictionary<Type, BaseScene>();
+
+        static SceneManager()
+        {
+            // default Scene 설정
+            _requestedScene = typeof(SFirstScene);
+
+            _timeManager = new TimeManager();
+        }
 
 
         /// <summary>
@@ -28,34 +36,43 @@ namespace OOP_Game_Shrek
         {
             if (_quitRequested) return false;
 
+            ProcessSceneConversion();
+
             InputManager.Poll();
 
             while(_timeManager.IsUpdateTime())
                 ObjectManager.Update();
 
             _timeManager.ReportDeltaTick();
-            //ObjectManager.Render();
+            ObjectManager.Render();
 
-            #region <Scene 전환 처리>
+
+            return true;
+        }
+
+        // Scene전환요청이 있으면 처리해주는 함수
+        static void ProcessSceneConversion()
+        {
             // Scene 전환해야하면 Scene 전환
             if (_requestedScene != null)
             {
+                // null로다시 바꿔주고
+                Type nextScene = _requestedScene;
+                _requestedScene = null;
+
                 _previousScene = _currentScene;
 
                 //있으면 꺼내쓰고
-                if (!_sceneList.TryGetValue(_requestedScene, out _currentScene))
+                if (!_sceneList.TryGetValue(nextScene, out _currentScene))
                 {
                     //없으면 새로 만들기
-                    _sceneList[_requestedScene] = (BaseScene)Activator.CreateInstance(_requestedScene);
-                    _currentScene = _sceneList[_requestedScene];
+                    _sceneList[nextScene] = (BaseScene)Activator.CreateInstance(nextScene);
+                    _currentScene = _sceneList[nextScene];
                 }
 
-                // null로다시 바꿔주고
-                _requestedScene = null;
+                //Scene전환이니 새로운 TimeManager 생성.
+                _timeManager = new TimeManager();
             }
-            #endregion
-
-            return true;
         }
 
         /// <summary>
@@ -74,7 +91,7 @@ namespace OOP_Game_Shrek
 
         public static void ChangePreviousScene()
         {
-            _requestedScene = _previousScene.GetType();
+            _requestedScene = _previousScene?.GetType();
         }
 
     }
