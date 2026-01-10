@@ -21,7 +21,7 @@ namespace OOP_Game_Shrek
         //크기
         //protected double _radius;
 
-        //객체의 외형?모양?
+        //객체의 외형
         protected Sprite _sprite;
 
         //Render를 위한 위치반환

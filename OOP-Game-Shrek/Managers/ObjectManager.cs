@@ -7,13 +7,13 @@ using OOP_Game_Shrek.Utils;
 
 namespace OOP_Game_Shrek
 {
+    // 모든 오브젝트들을 관리하는 ObjectManager 클래스
     internal static class ObjectManager
     {
         static List<BaseObject> _allObjList = new List<BaseObject>();        // 관리하는 전체 오브젝트 리스트
         static List<ICollision> _collisionObjList = new List<ICollision>();  // 전체 오브젝트중 ICollision 오브젝트만
         static Queue<BaseObject> _objAddRequestList = new Queue<BaseObject>(); // 오브젝트 생성 요청리스트 
         static Queue<BaseObject> _objDelRequestList = new Queue<BaseObject>(); // 오브젝트 삭제 요청리스트 
-
 
         // 생성한 오브젝트를 ObjectManager에게 등록 요청
         public static void AddObject(BaseObject obj)
@@ -57,8 +57,6 @@ namespace OOP_Game_Shrek
             }
         }
 
-
-
         //오브젝트들 update랑 충돌처리 돌려주고, add요청 delete요청 처리해주기.
         public static void Update()
         {
@@ -88,15 +86,17 @@ namespace OOP_Game_Shrek
                     target++;
                 }
             }
-
             ProcessObjAddRequest();
             ProcessObjDelRequest();
         }
 
         public static void Render()
         {
+            // Object들 Rendering
             foreach(BaseObject obj in _allObjList)
                 obj.Render();
+
+            //버퍼에있는거 Console.Write()해주기
             ConsoleManager.Flip();
         }
     }

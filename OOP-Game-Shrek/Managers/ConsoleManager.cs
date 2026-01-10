@@ -7,6 +7,7 @@ using System.Xml.Linq;
 
 namespace OOP_Game_Shrek
 {
+    // 콘솔 출력을 담당하는 클래스
     internal static class ConsoleManager
     {
         const int conX = 40; // console창 X축 사이즈
@@ -14,6 +15,7 @@ namespace OOP_Game_Shrek
 
         static char[,] _buffer = new char[conY, conX]; // console창에 출력할 내용을 담는 버퍼
 
+        // 생성자에서 초기화 작업
         static ConsoleManager()
         {
             Console.CursorVisible = false;

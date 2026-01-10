@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace OOP_Game_Shrek
 {
+    // 게임에서 필요한 타이밍을 관리하는 클래스
     internal static class TimeManager
     {
         private const int GAME_TPS = 30; // 게임의 초당 Update 호출 주기
@@ -66,13 +67,12 @@ namespace OOP_Game_Shrek
             return true;
         }
 
+        // 지금까지 lastUpdate 이후 얼마나 지났는지 _deltaTick 계산
         public static long ReportDeltaTick()
         {
             // deltaTick 계산
             _deltaTick = _timePerFrame.ElapsedTicks - _lastUpdateTick;
             return _deltaTick;
-        }
-       
-        
+        }       
     }
 }
