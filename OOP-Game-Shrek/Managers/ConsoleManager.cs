@@ -27,9 +27,11 @@ namespace OOP_Game_Shrek
         {
             Console.SetCursorPosition(0, 0);
             for (int i = 0; i < conY; i++)
+            {
                 for (int j = 0; j < conX; j++)
                     Console.Write(_buffer[i, j]);
-
+                Console.WriteLine();
+            }
             BufferClear();
         }
 
