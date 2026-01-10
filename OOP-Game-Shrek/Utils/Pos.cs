@@ -8,45 +8,53 @@ namespace OOP_Game_Shrek
 {
     internal struct Pos
     {
-        public double X;
-        public double Y;
+        public double _x;
+        public double _y;
+
+
+        public Pos(double x, double y)
+        {
+            _x = x;
+            _y = y;
+        }
+
 
         // 크기 1짜리 방향벡터 반환.  인텔리센스 왤캐 좋아;;
         public static Pos GetDirVector(Pos from, Pos to)
         {
-            double dx = to.X - from.X;
-            double dy = to.Y - from.Y;
+            double dx = to._x - from._x;
+            double dy = to._y - from._y;
             double length = Math.Sqrt(dx * dx + dy * dy);
             if (length == 0)
             {
-                return new Pos { X = 0, Y = 0 };
+                return new Pos { _x = 0, _y = 0 };
             }
-            return new Pos { X = dx / length, Y = dy / length };
+            return new Pos { _x = dx / length, _y = dy / length };
         }
 
 
         // 더하기 연산자 오버로딩
         public static Pos operator +(Pos a, Pos b)
         {
-            return new Pos { X = a.X + b.X, Y = a.Y + b.Y };
+            return new Pos { _x = a._x + b._x, _y = a._y + b._y };
         }
 
         // 곱하기 연산자 오버로딩
         public static Pos operator *(Pos pos, double d)
         {
-            return new Pos { X = pos.X * d, Y = pos.Y * d };
+            return new Pos { _x = pos._x * d, _y = pos._y * d };
         }
         public static Pos operator *(double d, Pos pos)
         {
-            return new Pos { X = pos.X * d, Y = pos.Y * d };
+            return new Pos { _x = pos._x * d, _y = pos._y * d };
         }
         public static Pos operator *(Pos pos, int i)
         {
-            return new Pos { X = pos.X * i, Y = pos.Y * i };
+            return new Pos { _x = pos._x * i, _y = pos._y * i };
         }
         public static Pos operator *(int i, Pos pos)
         {
-            return new Pos { X = pos.X * i, Y = pos.Y * i };
+            return new Pos { _x = pos._x * i, _y = pos._y * i };
         }
     }
 }

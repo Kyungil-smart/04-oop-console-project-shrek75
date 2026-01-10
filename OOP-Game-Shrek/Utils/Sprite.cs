@@ -24,8 +24,8 @@ namespace OOP_Game_Shrek.Utils
         public void Render(Pos pos)
         {
             //콘솔의 위치좌표는 정수밖에없으니까 반올림할게.
-            int x = (int)Math.Round(pos.X, MidpointRounding.AwayFromZero); 
-            int y = (int)Math.Round(pos.Y, MidpointRounding.AwayFromZero);
+            int x = (int)Math.Round(pos._x, MidpointRounding.AwayFromZero); 
+            int y = (int)Math.Round(pos._y, MidpointRounding.AwayFromZero);
 
             ConsoleManager.Draw(x,y, _data);
         }
