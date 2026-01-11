@@ -12,7 +12,9 @@ namespace OOP_Game_Shrek
     {
         private const int GAME_TPS = 30; // 게임의 초당 Update 호출 주기
         private static readonly long AVERAGE_TICKS = Stopwatch.Frequency / GAME_TPS; //게임 로직 고정 틱
-        
+        private static readonly double _logicTime = 1.0 / GAME_TPS; //Update마다 넣어주는 고정시간
+        public static double LogicTime { get { return _logicTime; } }
+
         //private long _gameLogicCount = 0; // 현재 Update 횟수
         //private long _lastGameLogicCount = 0; // 1초전 Update 횟수
 
@@ -65,17 +67,17 @@ namespace OOP_Game_Shrek
             // LastUpdateTick 갱신
             _lastUpdateTick += AVERAGE_TICKS;
             _deltaTick -= AVERAGE_TICKS;
-            _deltaTime = _deltaTick / Stopwatch.Frequency;
+            _deltaTime = (double)_deltaTick / Stopwatch.Frequency;
 
             return true;
         }
 
         // 지금까지 lastUpdate 이후 얼마나 지났는지 _deltaTick 계산
-        public static void Report()
+        private static void Report()
         {
             // deltaTick 계산
             _deltaTick = _timePerFrame.ElapsedTicks - _lastUpdateTick;
-            _deltaTime = _deltaTick / Stopwatch.Frequency;
+            _deltaTime = (double)_deltaTick / Stopwatch.Frequency;
         }       
     }
 }
