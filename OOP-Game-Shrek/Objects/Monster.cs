@@ -13,6 +13,7 @@ namespace OOP_Game_Shrek.Objects
         //몸박뎀
         int _bodyDamage = 5;
 
+        protected bool _trackPlayer = false;
 
         //Monster클래스 기본 Update. 
         public override void Update()

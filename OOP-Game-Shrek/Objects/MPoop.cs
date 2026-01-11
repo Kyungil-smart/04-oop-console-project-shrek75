@@ -18,13 +18,25 @@ namespace OOP_Game_Shrek.Objects
             _sprite = new Utils.Sprite(s);
 
             // 속력
-            _speed = 1.5;
+            _speed = 2;
 
-            // 방향  아 player바라보게 방향바꿔줘야하는구나
-            _dir = new Pos(1, 0);
+            // 방향
+            _dir = new Pos(0, 0);
    
         }
-        
+
+        public override void Update()
+        {
+            
+            //Player와의 거리가 10이하가 되면 추적상태 ON 
+            if(_trackPlayer) _dir = ObjectManager.GetDirVectorToPlayer(this.Pos);
+            else if(ObjectManager.GetDistanceToPlayer(this.Pos) < 10)
+            {
+                base._trackPlayer = true;
+            }
+            Move();
+
+        }
         
 
 
