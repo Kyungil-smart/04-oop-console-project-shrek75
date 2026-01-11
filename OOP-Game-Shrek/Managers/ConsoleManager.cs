@@ -12,7 +12,7 @@ namespace OOP_Game_Shrek
     {
         const int conX = 40; // console창 X축 사이즈
         const int conY = 20; // console창 Y축 사이즈
-        const int LogSize = 40; //로그출력용 추가 X축 사이즈
+        const int LogSize = 60; //로그출력용 추가 X축 사이즈
 
         static char[,] _buffer = new char[conY, conX]; // console창에 출력할 내용을 담는 버퍼
 
