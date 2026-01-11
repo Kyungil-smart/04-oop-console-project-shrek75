@@ -14,8 +14,13 @@ namespace OOP_Game_Shrek.Objects
         public Player(Pos pos)
         {
             _pos = pos;
-            base._speed = 5;
-            _sprite = new Sprite(new char[,] { { 'P' } });
+            base._speed = 10;
+            _sprite = new Sprite(new string[,]
+                {
+                    { "", "😀", "" },
+                    { "💪", "👕", "💪" },
+                    { "", "👖", "" }   
+                });
         }
 
         public override void Render()

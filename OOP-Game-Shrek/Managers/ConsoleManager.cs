@@ -19,6 +19,7 @@ namespace OOP_Game_Shrek
         // 생성자에서 초기화 작업
         static ConsoleManager()
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Console.CursorVisible = false;
             Console.SetWindowSize(conX+ LogSize, conY);
             Console.SetBufferSize(conX+ LogSize, conY);
@@ -32,9 +33,32 @@ namespace OOP_Game_Shrek
             for (int i = 0; i < conY; i++)
             {
                 for (int j = 0; j < conX; j++)
-                    Console.Write(_buffer[i, j]);
+                {
+                    char c = _buffer[i, j];
+                    //32비트짜리 문자Low인지?
+                    if (char.IsLowSurrogate(c))
+                        continue;
+
+                    //32비트문자 High인지?
+                    if (char.IsHighSurrogate(c) && j + 1 < conX)
+                    {
+                        char next = _buffer[i, j+1];
+
+                        if (char.IsLowSurrogate(next))
+                        {
+                            Console.Write($"{c}{next}"); //char 2개합쳐서 string만들기
+                            j++; // 1칸 더 추가
+                            continue;
+                        }
+                    }
+                    // char는 그냥 출력
+                    Console.Write(c);
+                }
+
                 Console.WriteLine();
             }
+
+
             BufferClear();
         }
 
@@ -71,6 +95,36 @@ namespace OOP_Game_Shrek
             for (int i = 0; i < sizeY; i++)
                 for (int j = 0; j < sizeX; j++)
                     _buffer[y + i, x + j] = arr[i, j];
+        }
+
+        //버퍼에 그리기3 (arr은 이모지용)
+        public static void Draw(int x, int y, string[,] arr)
+        {
+            if (arr == null) return;
+
+            int sizeY = arr.GetLength(0);
+            int sizeX = arr.GetLength(1) * 2; //이모지는 X축 2칸
+
+            //이거 범위를 객체중심기준으로 바꿔야겠다. 걸쳐있어도 보이게
+            // 다음에 바꾸자..
+            if (x < 0 || x + sizeX > conX || y < 0 || y + sizeY > conY)
+                return;
+
+            //string도 char처럼 넣고 출력만 잘해주는걸로
+            for (int i = 0; i < sizeY; i++)
+                for (int j = 0; j < sizeX; j++)
+                {
+                    // 16비트문자 , 32비트문자 둘다고려해야함 
+                    string s = arr[i, j / 2];
+                    char c;
+                    // Length가 2면 뒷자리도 그대로 넣어줌
+                    if (s != null && j % 2 < s.Length)
+                        c = s[j % 2];
+                    // Length가 1이면 뒷자리는 빈칸으로
+                    else c = ' ';
+
+                    _buffer[y + i, x + j] = c;
+                }
         }
 
     }
