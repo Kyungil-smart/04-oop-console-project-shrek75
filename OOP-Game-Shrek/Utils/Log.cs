@@ -23,7 +23,7 @@ namespace OOP_Game_Shrek
         static int _index = 0;
         static bool _fill = false;            // 삭제없음ㅋ 그냥 한번다차면 true
         public static bool _enable = false;   // 로그 찍기 켜기/끄기
-        static readonly int consolePosX = 60; // 로그출력할 X위치
+        static readonly int consolePosX = 42; // 로그출력할 X위치
         static readonly int consolePosY = 0;  // 로그출력할 Y위치 시작점
 
         public static int Capacity => _buffer.Length;
@@ -67,6 +67,29 @@ namespace OOP_Game_Shrek
 
             }
 
+        }
+
+        public static void PrintShrek()
+        {
+            Console.SetCursorPosition(consolePosX, consolePosY + 1);
+            Console.Write(@"   _____ __              __  ");
+            Console.SetCursorPosition(consolePosX, consolePosY + 2);
+            Console.Write(@"  / ___// /_  ________  / /__");
+            Console.SetCursorPosition(consolePosX, consolePosY + 3);
+            Console.Write(@"  \__ \/ __ \/ ___/ _ \/ //_/");
+            Console.SetCursorPosition(consolePosX, consolePosY + 4);
+            Console.Write(@" ___/ / / / / /  /  __/ ,<   ");
+            Console.SetCursorPosition(consolePosX, consolePosY + 5);
+            Console.Write(@"/____/_/ /_/_/   \___/_/|_|  ");
+
+            /**
+            *       _____ __              __  
+            *      / ___// /_  ________  / /__
+            *      \__ \/ __ \/ ___/ _ \/ //_/
+            *     ___/ / / / / /  /  __/ ,<   
+            *    /____/_/ /_/_/   \___/_/|_|  
+            *                                 
+            */
         }
     }
 }
