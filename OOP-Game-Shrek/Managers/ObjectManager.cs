@@ -73,15 +73,14 @@ namespace OOP_Game_Shrek
                     // 순회하면서 충돌이 있는지 확인
                     for(int j = target + 1; j< _collisionObjList.Count; j++)
                     {
-                        //이거 2개 충돌했는지 확인후
-                        //_collisionObjList[target];
-                        //_collisionObjList[j];
-                        //이런식으로 양쪽에 충돌했다고 알려주기.
-                        _collisionObjList[target].OnCollision((BaseObject)_collisionObjList[j]);
-                        _collisionObjList[j].OnCollision((BaseObject)_collisionObjList[target]);
-
-                        //근데 이게 충돌했는지 확인하는 과정에 객체의 크기 개념이 있어야 하는구나..
-                        // 좌표는 점이니까..
+                        BaseObject Bj = (BaseObject)_collisionObjList[j];
+                        BaseObject Bt = (BaseObject)_collisionObjList[target];
+                        if (CollisionCheck(Bj,Bt))
+                        {
+                            //충돌했으면 양쪽에 알려주기
+                            _collisionObjList[target].OnCollision(Bj);
+                            _collisionObjList[j].OnCollision(Bt);
+                        }
                     }
                     target++;
                 }
@@ -98,6 +97,27 @@ namespace OOP_Game_Shrek
 
             //버퍼에있는거 Console.Write()해주기
             ConsoleManager.Flip();
+        }
+
+        private static bool CollisionCheck(BaseObject obj1, BaseObject obj2)
+        {
+            double obj1X = obj1._pos._x;
+            double obj1Y = obj1._pos._y;
+            double obj2X = obj2._pos._x;
+            double obj2Y = obj2._pos._y;
+
+            //두 도형의 중심 사이의 거리
+            double distanceX = Math.Abs(obj2X - obj1X); 
+            double distanceY = Math.Abs(obj2Y - obj1Y);
+
+            //두 도형이 접할 때 기준 중심 사이의 거리  
+            double lengthX = obj1._sprite._sizeX / 2.0 + obj2._sprite._sizeX / 2.0;
+            double lengthY = obj1._sprite._sizeY / 2.0 + obj2._sprite._sizeY / 2.0;
+
+            //거리가 접할때길이보다 크면 충돌X
+            if(distanceX > lengthX || distanceY > lengthY)
+                return false;
+            return true;
         }
     }
 }

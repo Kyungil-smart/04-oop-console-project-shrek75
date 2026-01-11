@@ -10,16 +10,16 @@ namespace OOP_Game_Shrek
     internal abstract class BaseObject
     {
         //객체의 정중앙 위치
-        protected Pos _pos;
+        public Pos _pos;
 
         //방향
-        protected Pos _dir;
+        public Pos _dir;
 
         //속력
-        protected double _speed;
+        public double _speed;
 
         //객체의 외형과 크기
-        protected Sprite _sprite;
+        public Sprite _sprite;
 
         //Render를 위한 위치반환
         public Pos RenderPos { get { return _pos + (_dir * _speed) * TimeManager.DeltaTime; } }
