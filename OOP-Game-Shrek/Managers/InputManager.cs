@@ -11,9 +11,9 @@ namespace OOP_Game_Shrek
     internal static class InputManager
     {
         // Poll()마다 inputKey를 담을 hashSet 
-        static HashSet<ConsoleKeyInfo> _keys = new HashSet<ConsoleKeyInfo>();
+        static HashSet<ConsoleKey> _keys = new HashSet<ConsoleKey>();
         // readonly hashSet
-        public static IReadOnlyCollection<ConsoleKeyInfo> Keys { get { return _keys; } }
+        public static IReadOnlyCollection<ConsoleKey> Keys { get { return _keys; } }
 
         // 입력한 키가 있으면 _keys에 넣어준다.
         public static void Poll()
@@ -22,7 +22,7 @@ namespace OOP_Game_Shrek
             while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo _key = Console.ReadKey();
-                _keys.Add(_key);
+                _keys.Add(_key.Key);
             }
         }
 
