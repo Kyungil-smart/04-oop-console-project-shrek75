@@ -18,16 +18,13 @@ namespace OOP_Game_Shrek
         // 입력한 키가 있으면 _keys에 넣어준다.
         public static void Poll()
         {
-            while(Console.KeyAvailable)
+            _keys.Clear();
+            while (Console.KeyAvailable)
             {
                 ConsoleKeyInfo _key = Console.ReadKey();
                 _keys.Add(_key);
             }
         }
 
-        public static void Clear()
-        {
-            _keys.Clear();
-        }
     }
 }
