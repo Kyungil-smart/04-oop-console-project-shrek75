@@ -23,6 +23,7 @@ namespace OOP_Game_Shrek
         {
             // default Scene 설정
             _requestedScene = typeof(SFirstScene);
+
         }
 
 

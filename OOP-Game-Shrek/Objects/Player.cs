@@ -14,7 +14,7 @@ namespace OOP_Game_Shrek.Objects
         public Player(Pos pos)
         {
             _pos = pos;
-            base._speed = 3;
+            base._speed = 5;
             _sprite = new Sprite(new char[,] { { 'P' } });
         }
 
@@ -37,7 +37,6 @@ namespace OOP_Game_Shrek.Objects
                 newDir += Pos.Left;
             _dir = newDir;
 
-            
 
             Move();
             Log.Push(Log.LogType.INFO,$"[{_dir._x}][{_dir._y}]");
@@ -48,8 +47,10 @@ namespace OOP_Game_Shrek.Objects
             //
         }
 
-        [DllImport("user32.dll")]
-        static extern short GetAsyncKeyState(int vKey);
+        
 
     }
+
+   
+
 }
