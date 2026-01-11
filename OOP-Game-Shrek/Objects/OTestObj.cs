@@ -26,7 +26,7 @@ namespace OOP_Game_Shrek.Objects
         }
         public override void Render()
         {
-            _sprite.Render(_pos);
+            _sprite.Render(RenderPos);
         }
 
     }

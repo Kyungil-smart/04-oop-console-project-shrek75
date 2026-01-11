@@ -22,7 +22,7 @@ namespace OOP_Game_Shrek
         protected Sprite _sprite;
 
         //Render를 위한 위치반환
-        public Pos RenderPos { get { return _pos + (_dir * _speed) * TimeManager.DeltaTick; } }
+        public Pos RenderPos { get { return _pos + (_dir * _speed) * TimeManager.DeltaTime; } }
 
         public abstract void Update();
         public abstract void Render();

@@ -11,7 +11,7 @@ namespace OOP_Game_Shrek
     internal static class TimeManager
     {
         private const int GAME_TPS = 30; // 게임의 초당 Update 호출 주기
-        private const long AVERAGE_TICKS = 10000000 / GAME_TPS; //게임 로직 고정 틱
+        private static readonly long AVERAGE_TICKS = Stopwatch.Frequency / GAME_TPS; //게임 로직 고정 틱
         
         //private long _gameLogicCount = 0; // 현재 Update 횟수
         //private long _lastGameLogicCount = 0; // 1초전 Update 횟수
@@ -23,7 +23,8 @@ namespace OOP_Game_Shrek
 
         static long _lastUpdateTick = 0; // 마지막 Update 시점의 tick
         static long _deltaTick = 0;     // 마지막 Update 이후 남은 tick
-        public static long DeltaTick { get { return _deltaTick; } }
+        static double _deltaTime = 0;   // _deltaTick을 시간으로 변경한 값.
+        public static double DeltaTime { get { return _deltaTime; } }
 
         static Stopwatch _timePerFrame; //tick측정을 위한 Stopwatch
         static TimeManager()
@@ -36,6 +37,7 @@ namespace OOP_Game_Shrek
             _updateTimes = 0;
             _lastUpdateTick = 0;
             _deltaTick = 0;
+            _deltaTime = 0;
             _timePerFrame = Stopwatch.StartNew();
         }
 
@@ -44,7 +46,7 @@ namespace OOP_Game_Shrek
         /// </summary>
         public static bool IsUpdateTime()
         {
-            ReportDeltaTick();
+            Report();
 
             // Update 해야할 타이밍인지 확인
             if (_deltaTick < AVERAGE_TICKS)
@@ -63,16 +65,17 @@ namespace OOP_Game_Shrek
             // LastUpdateTick 갱신
             _lastUpdateTick += AVERAGE_TICKS;
             _deltaTick -= AVERAGE_TICKS;
+            _deltaTime = _deltaTick / Stopwatch.Frequency;
 
             return true;
         }
 
         // 지금까지 lastUpdate 이후 얼마나 지났는지 _deltaTick 계산
-        public static long ReportDeltaTick()
+        public static void Report()
         {
             // deltaTick 계산
             _deltaTick = _timePerFrame.ElapsedTicks - _lastUpdateTick;
-            return _deltaTick;
+            _deltaTime = _deltaTick / Stopwatch.Frequency;
         }       
     }
 }
