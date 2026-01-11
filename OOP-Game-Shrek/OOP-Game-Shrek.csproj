@@ -47,6 +47,7 @@
     <Compile Include="Objects\Monster.cs" />
     <Compile Include="Objects\MPoop.cs" />
     <Compile Include="Objects\OTestObj.cs" />
+    <Compile Include="Objects\Player.cs" />
     <Compile Include="Scenes\BaseScene.cs" />
     <Compile Include="Managers\ConsoleManager.cs" />
     <Compile Include="Scenes\SFirstScene.cs" />

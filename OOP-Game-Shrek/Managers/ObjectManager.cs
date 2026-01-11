@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using OOP_Game_Shrek.Objects;
 using OOP_Game_Shrek.Utils;
 
 namespace OOP_Game_Shrek
@@ -14,6 +16,7 @@ namespace OOP_Game_Shrek
         static List<ICollision> _collisionObjList = new List<ICollision>();  // 전체 오브젝트중 ICollision 오브젝트만
         static Queue<BaseObject> _objAddRequestList = new Queue<BaseObject>(); // 오브젝트 생성 요청리스트 
         static Queue<BaseObject> _objDelRequestList = new Queue<BaseObject>(); // 오브젝트 삭제 요청리스트 
+        static Player _player; //플레이어 담을 변수
 
         // 생성한 오브젝트를 ObjectManager에게 등록 요청
         public static void AddObject(BaseObject obj)
@@ -118,6 +121,37 @@ namespace OOP_Game_Shrek
             if(distanceX > lengthX || distanceY > lengthY)
                 return false;
             return true;
+        }
+
+
+
+        //몬스터가 쫓아오게 만들려면 Player의 위치를 알아야하는데
+        // ObjectManager에게 요청하는걸로하고 ObjectManager는 Player Object를 항상들고있어야겠다.
+        // 그리고 Monster가 Update에서  player위치를 요청하게해야 monster별 player감지범위를 설정하는데 좋을듯
+
+        // player객체 추가용 전용함수
+        public static void AddPlayer(Player player)
+        {
+            _player = player;
+            _objAddRequestList.Enqueue(player);
+        }
+        public static void DeletePlayer(Player player)
+        {
+            _player = null;
+            _objDelRequestList.Enqueue(player);
+        }
+
+        //플레이어와의 거리 반환.
+        public static double GetDistanceToPlayer(Pos objPos)
+        {
+            if (_player == null) return double.NaN;
+            return Pos.GetDistance(_player.Pos, objPos);
+        }
+        //플레이어에게 가는 크기1의 방향벡터 반환
+        public static Pos GetDirVectorToPlayer(Pos objPos)
+        {
+            if (_player == null) return new Pos(0, 0);
+            return Pos.GetDirVector(objPos, _player.Pos);
         }
     }
 }
