@@ -21,8 +21,18 @@ namespace OOP_Game_Shrek.Objects
 
         public override void Update()
         {
-            _pos._x += 0.1;
+            if(_pos._y == 3)
+            {
+                base._speed = 1.0;
+                base._dir = new Pos(1, 0);
+            }
+            if(_pos._y == 5)
+            {
+                base._speed = 1.0;
+                base._dir = new Pos(-1, 0);
+            }
 
+            _pos = _pos + (_dir * _speed) * TimeManager.LogicTime;
         }
         public override void Render()
         {
