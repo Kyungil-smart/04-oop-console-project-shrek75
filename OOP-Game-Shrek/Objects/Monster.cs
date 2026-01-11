@@ -10,6 +10,8 @@ namespace OOP_Game_Shrek.Objects
     //일단 상위클래스 만들어야할것같아서 만든 몬스터클래스
     internal abstract class Monster : BaseObject, ICollision
     {
+        //몸박뎀
+        int _bodyDamage = 5;
 
         public override void Render()
         {
@@ -21,6 +23,7 @@ namespace OOP_Game_Shrek.Objects
             
 
             Log.Push(Log.LogType.INFO, "Monster.Update()");
+            Move();
 
         }
 

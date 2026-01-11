@@ -25,9 +25,10 @@ namespace OOP_Game_Shrek
         //Render를 위한 위치반환
         protected Pos RenderPos { get { return _pos + (_dir * _speed) * TimeManager.DeltaTime; } }
 
+        //Update에서 오브젝트위치 갱신용 Move
         public virtual void Move()
         {
-            _pos = _pos + (_dir * _speed) * TimeManager.DeltaTime;
+            _pos = _pos + (_dir * _speed) * TimeManager.LogicTime;
         }
 
         public abstract void Update();
