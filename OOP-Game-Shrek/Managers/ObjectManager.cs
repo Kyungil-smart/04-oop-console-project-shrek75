@@ -16,7 +16,11 @@ namespace OOP_Game_Shrek
         static List<ICollision> _collisionObjList = new List<ICollision>();  // 전체 오브젝트중 ICollision 오브젝트만
         static Queue<BaseObject> _objAddRequestList = new Queue<BaseObject>(); // 오브젝트 생성 요청리스트 
         static Queue<BaseObject> _objDelRequestList = new Queue<BaseObject>(); // 오브젝트 삭제 요청리스트 
+        public static List<BaseObject> _deadObjectList = new List<BaseObject>();      //죽은 오브젝트 리스트. stage관리를위함. 임시로 public줄게
+
+
         static Player _player; //플레이어 담을 변수
+        public static Player Player { get { return _player; } }
 
         // 생성한 오브젝트를 ObjectManager에게 등록 요청
         public static void AddObject(BaseObject obj)
@@ -51,6 +55,9 @@ namespace OOP_Game_Shrek
             while (_objDelRequestList.Count != 0)
             {
                 BaseObject obj = _objDelRequestList.Dequeue();
+
+                //죽은애면 일단 여기 넣어둘게 임시로
+                if(obj.IsDead) _deadObjectList.Add(obj);
 
                 _allObjList.Remove(obj);
 
