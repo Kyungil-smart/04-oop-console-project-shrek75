@@ -24,7 +24,7 @@ namespace OOP_Game_Shrek.Objects
             _dir = new Pos(0, 0);
 
             // 몸박뎀쿨
-            _bodyDamageCoolDown = (int)(1 * TimeManager.GAME_TPS);
+            _bodyDamageCoolDown = (int)(3 * TimeManager.GAME_TPS);
    
         }
 
@@ -40,11 +40,14 @@ namespace OOP_Game_Shrek.Objects
             Move();
 
             //근데 이렇게하면 monster가 여러명을 못때려서 skill하나가 때린정보를 기억하고 개별적 쿨탐을 계산해야하는건가
-            if(--_bodyDamageCalcuation == 0)
+            if(_bodyDamageUsable == false)
             {
-                Log.Push(Log.LogType._WARN, $"쿨 ON");
-                _bodyDamageUsable = true;
-                _bodyDamageCalcuation = _bodyDamageCoolDown;
+                if (--_bodyDamageCalcuation == 0)
+                {
+                    Log.Push(Log.LogType._WARN, $"쿨 ON");
+                    _bodyDamageUsable = true;
+                    _bodyDamageCalcuation = _bodyDamageCoolDown;
+                }
             }
         }
 
