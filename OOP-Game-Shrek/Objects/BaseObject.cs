@@ -81,6 +81,37 @@ namespace OOP_Game_Shrek
             HP -= attackPower;
         }
 
+        public void DrawHP()
+        {
+            ConsoleColor color;
+            //HP출력의 색을 10단위로 정함
+            int hp = (int)HP / 10;
+            switch(hp)
+            {
+                case 0:
+                case 1:
+                case 2:
+                    color = ConsoleColor.Red;
+                    break;
+                case 3:
+                case 4:
+                case 5:
+                    color = ConsoleColor.Yellow;
+                    break;
+                case 6:
+                case 7:
+                case 8:
+                    color = ConsoleColor.Blue;
+                    break;
+                default:
+                    color = ConsoleColor.Green;
+                    break;
+            }
+
+            //아미친 색정보 넘겨줘야하네 미친 아
+
+
+        }
 
         
     }

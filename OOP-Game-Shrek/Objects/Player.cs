@@ -22,10 +22,12 @@ namespace OOP_Game_Shrek.Objects
             base._speed = 10;
             _sprite = new Sprite(new string[,]
                 {
-                    {"😀"}
+                    {"👶"},
+                    {"👚" },
+                    {"👖" }
                 });
         }
-
+        
         public override void Render()
         {
             base.Render();
@@ -43,8 +45,8 @@ namespace OOP_Game_Shrek.Objects
                     //기본스킬 생성
                     Pos skillPos = _pos + _lastLookDir * 2;
                     ObjectManager.AddObject(new SSwordBaseAttack(skillPos));
-                    skillPos = _pos + _lastLookDir * 4;
-                    ObjectManager.AddObject(new SSwordBaseAttack(skillPos));
+                    //skillPos = _pos + _lastLookDir * 4;
+                    //ObjectManager.AddObject(new SSwordBaseAttack(skillPos));
 
                     calculationSkill1 = coolDownSkill1;
                 }
