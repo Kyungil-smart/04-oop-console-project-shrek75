@@ -55,12 +55,16 @@ namespace OOP_Game_Shrek
         // Scene전환요청이 있으면 처리해주는 함수
         static void ProcessSceneConversion()
         {
+
             // Scene 전환해야하면 Scene 전환
             if (_requestedScene == null) return;
 
             // 다시 null로 초기화
             Type nextScene = _requestedScene;
             _requestedScene = null;
+
+            //기존씬 지워야할 오브젝트 지워주기
+            ObjectManager.DeleteObjectsIfChangeScene();
 
             // 실행중이였던 scene 기록
             _previousScene = _currentScene;
@@ -73,8 +77,13 @@ namespace OOP_Game_Shrek
                 _currentScene = _sceneList[nextScene];
             }
 
+            // 교체한 Scene의 Init() 돌려주기
+            _currentScene.Init();
+
             // Scene교체시 stopwatch 초기화
             TimeManager.Reset();
+
+            Log.Push(Log.LogType._INFO, $"Scene 교체 : {nextScene.ToString()}");
         }
 
         /// <summary>

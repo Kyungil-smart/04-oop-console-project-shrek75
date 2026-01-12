@@ -64,11 +64,6 @@ namespace OOP_Game_Shrek.Objects
                     _bodyDamageUsable = false;
 
                     otherObj.Damage(this._bodyDamage);
-                    if (otherObj.IsDead)
-                    {
-                        ObjectManager.DeletePlayer(p);
-                        //Log.Push(Log.LogType._WARN, $"작동하나?");
-                    }
 
                     Log.Push(Log.LogType.ERROR, $"{base._bodyDamage} 뎀지 주기!");
                     Log.Push(Log.LogType._INFO, $"player 체력 : [{p.HP}]");

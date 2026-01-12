@@ -17,6 +17,7 @@ namespace OOP_Game_Shrek.Objects
 
         public Player(Pos pos)
         {
+            _isDeletable = false;
             HP = 100;
             _pos = pos;
             base._speed = 10;
@@ -36,6 +37,13 @@ namespace OOP_Game_Shrek.Objects
 
         public override void Update()
         {
+            //죽었으면
+            if(IsDead)
+            {
+                ObjectManager.DeletePlayer(this);
+                SceneManager.ChangePreviousScene();
+            }
+
             calculationSkill1--;
 
             //기본스킬

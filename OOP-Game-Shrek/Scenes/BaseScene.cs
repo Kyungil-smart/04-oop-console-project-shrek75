@@ -8,5 +8,8 @@ namespace OOP_Game_Shrek
 {
     internal abstract class BaseScene
     {
+        //Scene전환시 초기화작업 명시
+        public virtual void Init() { }
     }
+
 }

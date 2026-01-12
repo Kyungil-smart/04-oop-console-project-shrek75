@@ -63,6 +63,10 @@ namespace OOP_Game_Shrek
         private bool _IsDead = false;
         public bool IsDead { get { return _IsDead; } }
 
+        //Scene전환시 삭제되어야할 Object인지
+        protected bool _isDeletable = true;
+        public bool IsDeletable { get {  return _isDeletable; }  }
+
         public abstract void Update();
 
         //BaseObject 기본 Render

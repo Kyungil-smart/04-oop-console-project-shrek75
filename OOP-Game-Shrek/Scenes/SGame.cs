@@ -11,6 +11,11 @@ namespace OOP_Game_Shrek.Scenes
     {
         public SGame()
         {
+            
+        }
+
+        public override void Init()
+        {
             ObjectManager.AddObject(new MPoop(new Pos(11, 4)));
             ObjectManager.AddObject(new MPoop(new Pos(25, 4)));
             ObjectManager.AddObject(new MRamen(new Pos(3, 5)));
@@ -56,9 +61,6 @@ namespace OOP_Game_Shrek.Scenes
             ObjectManager.AddObject(new Wall(new Pos(37, 21)));
             ObjectManager.AddObject(new Wall(new Pos(38, 21)));
             ObjectManager.AddObject(new Wall(new Pos(39, 21)));
-
-
-
 
         }
     }

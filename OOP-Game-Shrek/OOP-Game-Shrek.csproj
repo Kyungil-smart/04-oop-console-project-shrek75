@@ -59,8 +59,8 @@
     <Compile Include="Scenes\SFirstScene.cs" />
     <Compile Include="Scenes\SGame.cs" />
     <Compile Include="Scenes\STitle.cs" />
-    <Compile Include="Utils\ICollision.cs" />
     <Compile Include="Managers\InputManager.cs" />
+    <Compile Include="Utils\ICollision.cs" />
     <Compile Include="Utils\Log.cs" />
     <Compile Include="Managers\ObjectManager.cs" />
     <Compile Include="Utils\Pos.cs" />

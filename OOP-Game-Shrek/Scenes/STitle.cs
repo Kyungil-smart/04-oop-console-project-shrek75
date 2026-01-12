@@ -27,10 +27,14 @@ namespace OOP_Game_Shrek.Scenes
 
         public STitle()
         {
-            ObjectManager.AddPlayer(new Player(new Pos(39, 19))); //기왕이면 Player를 위로 배치하는게 렌더우선순위가 낮아서 좋음
+            
+        }
+        public override void Init()
+        {
+            ObjectManager.AddPlayer(new Player(new Pos(20, 20))); //기왕이면 Player를 위로 배치하는게 렌더우선순위가 낮아서 좋음
             ObjectManager.AddObject(new DungeonEntrance(new Pos(0.5, 19)));
         }
-
+        
 
 
     }

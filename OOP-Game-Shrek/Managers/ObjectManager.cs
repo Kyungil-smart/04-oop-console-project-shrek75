@@ -153,5 +153,17 @@ namespace OOP_Game_Shrek
             if (_player == null) return new Pos(0, 0);
             return Pos.GetDirVector(objPos, _player.Pos);
         }
+
+
+        //Scene전환시 삭제해야할 Object들 삭제해주기
+        public static void DeleteObjectsIfChangeScene()
+        {
+            foreach(BaseObject o in _allObjList)
+            {
+                if (!o.IsDeletable) continue;
+                _objDelRequestList.Enqueue(o);
+            }
+        }
+
     }
 }
