@@ -13,8 +13,8 @@ namespace OOP_Game_Shrek
     {
         public enum LogType
         {
-            INFO,
-            WARN,
+            _INFO,
+            _WARN,
             ERROR,
         }
 
@@ -47,8 +47,11 @@ namespace OOP_Game_Shrek
         // 로그 추가
         public static void Push(LogType type, string log)
         {
+            DateTime now = DateTime.Now;
+            string date = $"[{now.Hour:00}:{now.Minute:00}:{now.Second:00}:{now.Millisecond:000}] ";
+
             // 튜플배열로 logtype, log 둘다 담아주기
-            _buffer[_index] = (type, log);
+            _buffer[_index] = (type, date+log);
             //링버퍼라 index 계산
             _index = (_index + 1) % _buffer.Length;
 
@@ -78,12 +81,9 @@ namespace OOP_Game_Shrek
             //링버퍼 돌면서 로그찍기
             for (int i = 0; i < count; i++)
             {
-                DateTime now = DateTime.Now;
                 Console.SetCursorPosition(consolePosX, consolePosY + i + 1);
-                //시간출력
-                Console.Write($"{now.Hour}:{now.Minute:00}:{now.Second:00}:{now.Millisecond:000} ");
                 //Log 종류 출력
-                if(_buffer[(start + i) % _buffer.Length].Item1 == LogType.WARN)
+                if(_buffer[(start + i) % _buffer.Length].Item1 == LogType._WARN)
                     Console.ForegroundColor = ConsoleColor.Yellow;
                 else if (_buffer[(start + i) % _buffer.Length].Item1 == LogType.ERROR)
                     Console.ForegroundColor = ConsoleColor.Red;

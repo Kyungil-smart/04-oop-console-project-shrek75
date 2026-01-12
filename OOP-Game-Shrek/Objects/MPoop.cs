@@ -55,7 +55,7 @@ namespace OOP_Game_Shrek.Objects
             //근데 이렇게하면 monster가 여러명을 못때려서 skill하나가 때린정보를 기억하고 개별적 쿨탐을 계산해야하는건가
             if(--_bodyDamageCalcuation == 0)
             {
-                Log.Push(Log.LogType.WARN, $"쿨 ON");
+                Log.Push(Log.LogType._WARN, $"쿨 ON");
                 _bodyDamageUsable = true;
                 _bodyDamageCalcuation = _bodyDamageCoolDown;
             }
