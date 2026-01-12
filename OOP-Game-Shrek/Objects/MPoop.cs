@@ -55,6 +55,7 @@ namespace OOP_Game_Shrek.Objects
             }
         }
 
+
         public override void OnCollision(BaseObject otherObj)
         {
             //플레이어 객체일경우

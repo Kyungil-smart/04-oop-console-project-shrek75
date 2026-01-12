@@ -108,9 +108,8 @@ namespace OOP_Game_Shrek
                     break;
             }
 
-            //아미친 색정보 넘겨줘야하네 미친 아
-
-
+            //임시로 1,1
+            ConsoleManager.Draw(1, 1, '▬', color);
         }
 
         

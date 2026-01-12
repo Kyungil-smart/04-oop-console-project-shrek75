@@ -30,6 +30,9 @@ namespace OOP_Game_Shrek.Objects
         public override void Render()
         {
             base.Render();
+
+            //임시로 여기넣을게
+            DrawHP();
         }
 
         //추상메서드로 ICollision 구현

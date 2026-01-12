@@ -78,7 +78,7 @@ namespace OOP_Game_Shrek
         }
 
         //버퍼에 그리기
-        public static void Draw(int x, int y, char c, ConsoleColor color)
+        public static void Draw(int x, int y, char c, ConsoleColor color = ConsoleColor.White)
         {
             if (x < 0 || x > conX - 1 || y < 0 || y > conY - 1)
                 return;
