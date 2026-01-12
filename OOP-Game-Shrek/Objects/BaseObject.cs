@@ -65,6 +65,8 @@ namespace OOP_Game_Shrek
         public virtual void Render()
         {
             _sprite?.Render(RenderPos);
+            //Log.Push(Log.LogType._INFO, $"renderPos x{RenderPos._x} y{RenderPos._y}");
+
         }
 
         //Render를 위한 위치반환
@@ -109,7 +111,8 @@ namespace OOP_Game_Shrek
             }
 
             //체력바 떠있는 위치 정하기
-            Pos hPPos = _sprite.RetLeftTopPos(RenderPos) + new Pos(-1, -1);
+            Pos hPPos = _sprite.RetLeftTopPos(RenderPos) + new Pos(0, -1);
+            Log.Push(Log.LogType._INFO, $"hpbar x{hPPos._x} y{hPPos._y}");
             ConsoleManager.Draw((int)hPPos._x, (int)hPPos._y, '▬', color);
         }
 
