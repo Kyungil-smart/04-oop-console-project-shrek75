@@ -19,12 +19,12 @@ namespace OOP_Game_Shrek
         }
 
         static readonly (LogType,string)[] _buffer; //튜플로 가자
-        const int SIZE = 19;                  // 링버퍼사이즈 겸 Y출력범위
+        const int SIZE = 23;                  // 링버퍼사이즈 겸 Y출력범위
         static int _index = 0;
         static bool _full = false;            // 삭제없음ㅋ 그냥 한번다차면 true
-        static readonly int consolePosX = 42; // 로그출력할 X위치
+        static readonly int consolePosX = 82; // 로그출력할 X위치
+        const int consoleMaxX = 140;          // 로그출력 X위치 끝지점    
         static readonly int consolePosY = 0;  // 로그출력할 Y위치 시작점
-        const int consoleMaxX = 100;          // 로그출력 X위치 끝지점    
         private static bool _debugMode = false;   // 로그 찍기 켜기/끄기
         public static bool DebugMode
         {
