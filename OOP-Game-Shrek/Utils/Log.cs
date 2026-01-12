@@ -128,12 +128,11 @@ namespace OOP_Game_Shrek
 
         private static void PrintEmpty()
         {
-            string emptyStr = @"                                   
-                                                                                      ";
+            string empty = new string(' ', 60);
             for(int i=1; i<= SIZE; i++)
             {
                 Console.SetCursorPosition(consolePosX, consolePosY + i);
-                Console.Write(emptyStr.Substring(0, consoleMaxX - consolePosX + 1));
+                Console.WriteLine(empty);
             }
         }
     }
