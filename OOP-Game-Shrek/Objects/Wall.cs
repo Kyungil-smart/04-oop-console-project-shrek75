@@ -8,28 +8,25 @@ using System.Threading.Tasks;
 
 namespace OOP_Game_Shrek.Objects
 {
-    internal class DungeonEntrance : BaseObject , ICollision
+    internal class Wall : BaseObject, ICollision
     {
-        public DungeonEntrance(Pos pos)
+        public Wall(Pos pos)
         {
             base._pos = pos;
-            string[,] s = new string[,] { { "⛩️", "⛩️" }, { "⛩️", "🕯️" }, { "⛩️", "🕯️" } ,{ "⛩️", "🕯️" } ,{ "⛩️" , "⛩️" } };
+            string[,] s = new string[,] { { "⛰️" } };
             base._sprite = new Utils.Sprite(s);
             base._isInvincible = true;
         }
 
         public void OnCollision(BaseObject otherObj)
         {
-            if (otherObj is Player)
-            {
-                ObjectManager.DeleteObject(this);
-                SceneManager.ChangeScene<SGame>();
-            }
+            Log.Push(Log.LogType._WARN, $"{base.GetType()} x{Pos._x}y{Pos._y}");
+            otherObj.MovePos(base.LastPos);
         }
 
         public override void Update()
         {
-            
+
         }
     }
 }

@@ -27,6 +27,10 @@ namespace OOP_Game_Shrek
             }
         }
 
+        //직전 Update때 객체의 위치
+        private Pos _lastPos;
+        public Pos LastPos {  get { return _lastPos; } }
+
         //마지막으로 바라봤던 방향
         protected Pos _lastLookDir = new Pos(0,0);
 
@@ -75,12 +79,24 @@ namespace OOP_Game_Shrek
         //Update에서 오브젝트위치 갱신용 Move
         public virtual void Move()
         {
+            _lastPos = _pos;
             _pos = _pos + (Dir * _speed) * TimeManager.LogicTime;
             if (_pos._x < 0) _pos._x = 0;
             if (_pos._x > ConsoleManager.conX/2 -1) _pos._x = ConsoleManager.conX/2 -1;
             if (_pos._y < 0) _pos._y = 0;
             if (_pos._y > ConsoleManager.conY - 1) _pos._y = ConsoleManager.conY - 1;
 
+        }
+
+        //객체 특정위치로 보내기
+        public void MovePos(Pos pos)
+        {
+            _lastPos = pos; 
+            _pos = pos;
+            if (_pos._x < 0) _pos._x = 0;
+            if (_pos._x > ConsoleManager.conX / 2 - 1) _pos._x = ConsoleManager.conX / 2 - 1;
+            if (_pos._y < 0) _pos._y = 0;
+            if (_pos._y > ConsoleManager.conY - 1) _pos._y = ConsoleManager.conY - 1;
         }
 
         public virtual void Damage(double attackPower)

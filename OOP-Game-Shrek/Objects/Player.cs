@@ -64,7 +64,7 @@ namespace OOP_Game_Shrek.Objects
             Dir = newDir;
             Move();
 
-            Log.Push(Log.LogType._INFO, $"x{base.Pos._x} y{base.Pos._y}");
+            //Log.Push(Log.LogType._INFO, $"x{base.Pos._x} y{base.Pos._y}");
             
         }
 
