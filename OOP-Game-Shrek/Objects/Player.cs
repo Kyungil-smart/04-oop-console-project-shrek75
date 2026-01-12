@@ -13,6 +13,7 @@ namespace OOP_Game_Shrek.Objects
     {
         public Player(Pos pos)
         {
+            HP = 100;
             _pos = pos;
             base._speed = 10;
             _sprite = new Sprite(new string[,]
@@ -44,6 +45,8 @@ namespace OOP_Game_Shrek.Objects
 
 
             Move();
+
+            
         }
 
         public void OnCollision(BaseObject otherObj)

@@ -25,6 +25,8 @@ namespace OOP_Game_Shrek.Objects
 
             // 몸박뎀쿨
             _bodyDamageCoolDown = (int)(3 * TimeManager.GAME_TPS);
+
+            _bodyDamage = 30;
    
         }
 
@@ -54,12 +56,22 @@ namespace OOP_Game_Shrek.Objects
         public override void OnCollision(BaseObject otherObj)
         {
             //플레이어 객체일경우
-            if(otherObj is Player)
+            if(otherObj is Player p)
             {
                 if (_bodyDamageUsable)
                 {
                     _bodyDamageUsable = false;
+
+                    otherObj.Damage(this._bodyDamage);
+                    if (otherObj.IsDead)
+                    {
+                        ObjectManager.DeletePlayer(p);
+                        Log.Push(Log.LogType._WARN, $"작동하나?");
+
+                    }
+
                     Log.Push(Log.LogType.ERROR, $"{base._bodyDamage} 뎀지 주기!");
+                    Log.Push(Log.LogType._INFO, $"player 체력 : [{p.HP}]");
                 }
             }
         }
