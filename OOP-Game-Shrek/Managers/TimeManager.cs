@@ -10,7 +10,7 @@ namespace OOP_Game_Shrek
     // 게임에서 필요한 타이밍을 관리하는 클래스
     internal static class TimeManager
     {
-        private const int GAME_TPS = 30; // 게임의 초당 Update 호출 주기
+        public const int GAME_TPS = 30; // 게임의 초당 Update 호출 주기
         private static readonly long AVERAGE_TICKS = Stopwatch.Frequency / GAME_TPS; //게임 로직 고정 틱
         private static readonly double _logicTime = 1.0 / GAME_TPS; //Update마다 넣어주는 고정시간
         public static double LogicTime { get { return _logicTime; } }

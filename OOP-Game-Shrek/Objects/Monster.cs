@@ -11,8 +11,14 @@ namespace OOP_Game_Shrek.Objects
     internal abstract class Monster : BaseObject, ICollision
     {
         //몸박뎀
-        int _bodyDamage = 5;
+        protected int _bodyDamage = 5;
+        //몸박뎀 쿨타임 (근데 이런식으로 만들면 메이플처럼 쿨타임이 섭렉영향받는구나. 섭렉은아니지만..)
+        protected int _bodyDamageCoolDown = (int)(1 * TimeManager.GAME_TPS); //1초
+        protected int _bodyDamageCalcuation = (int)(1 * TimeManager.GAME_TPS);//일단 임시테스트로 잡다하게 
+        //몸박뎀 사용가능여부(이거 그냥 스킬정보struct를 만들어야겟는데)
+        protected bool _bodyDamageUsable = true;
 
+        //플레이어 추적여부
         protected bool _trackPlayer = false;
 
         //Monster클래스 기본 Update. 
@@ -25,13 +31,8 @@ namespace OOP_Game_Shrek.Objects
         {
             base.Render();
         }
-        
 
-        public void OnCollision(BaseObject otherObj)
-        {
-            
-
-        }
-
+        //추상메서드로 ICollision 구현
+        public abstract void OnCollision(BaseObject otherObj);
     }
 }

@@ -44,7 +44,6 @@ namespace OOP_Game_Shrek.Objects
 
 
             Move();
-            Log.Push(Log.LogType.INFO,$"[{_dir._x}][{_dir._y}]");
         }
 
         public void OnCollision(BaseObject otherObj)

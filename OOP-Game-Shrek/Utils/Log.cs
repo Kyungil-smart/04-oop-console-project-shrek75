@@ -76,10 +76,10 @@ namespace OOP_Game_Shrek
             int start = _full ? _index : 0;
 
             //링버퍼 돌면서 로그찍기
-            for (int i = 1; i <= count; i++)
+            for (int i = 0; i < count; i++)
             {
                 DateTime now = DateTime.Now;
-                Console.SetCursorPosition(consolePosX, consolePosY + i);
+                Console.SetCursorPosition(consolePosX, consolePosY + i + 1);
                 //시간출력
                 Console.Write($"{now.Hour}:{now.Minute:00}:{now.Second:00}:{now.Millisecond:000} ");
                 //Log 종류 출력
