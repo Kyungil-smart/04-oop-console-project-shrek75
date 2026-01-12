@@ -117,10 +117,10 @@ namespace OOP_Game_Shrek
             double lengthX = obj1._sprite._sizeX / 2.0 + obj2._sprite._sizeX / 2.0;
             double lengthY = obj1._sprite._sizeY / 2.0 + obj2._sprite._sizeY / 2.0;
 
-            //거리가 접할때길이보다 크면 충돌X
-            if(distanceX > lengthX || distanceY > lengthY)
-                return false;
-            return true;
+            //거리가 접할때길이보다 작으면 충돌O
+            if(distanceX < lengthX && distanceY < lengthY)
+                return true;
+            return false;
         }
 
 
