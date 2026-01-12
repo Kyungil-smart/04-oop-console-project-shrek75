@@ -20,8 +20,8 @@ namespace OOP_Game_Shrek.Objects
 
         public void OnCollision(BaseObject otherObj)
         {
-            Log.Push(Log.LogType._WARN, $"{base.GetType()} x{Pos._x}y{Pos._y}");
-            otherObj.MovePos(base.LastPos);
+            //Log.Push(Log.LogType._WARN, $"{base.GetType()} x{Pos._x}y{Pos._y}");
+            otherObj.MovePos(otherObj.LastPos);
         }
 
         public override void Update()

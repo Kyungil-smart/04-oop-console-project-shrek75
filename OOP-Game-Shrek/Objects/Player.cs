@@ -65,7 +65,9 @@ namespace OOP_Game_Shrek.Objects
             Move();
 
             //Log.Push(Log.LogType._INFO, $"x{base.Pos._x} y{base.Pos._y}");
-            
+            //Log.Push(Log.LogType._INFO, $"L x{base.LastPos._x} y{base.LastPos._y}");
+
+
         }
 
         public void OnCollision(BaseObject otherObj)

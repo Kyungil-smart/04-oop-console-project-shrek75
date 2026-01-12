@@ -91,7 +91,7 @@ namespace OOP_Game_Shrek
         //객체 특정위치로 보내기
         public void MovePos(Pos pos)
         {
-            _lastPos = pos; 
+            _lastPos = _pos;
             _pos = pos;
             if (_pos._x < 0) _pos._x = 0;
             if (_pos._x > ConsoleManager.conX / 2 - 1) _pos._x = ConsoleManager.conX / 2 - 1;
