@@ -10,6 +10,8 @@ namespace OOP_Game_Shrek.Objects
     {
         public MPoop(Pos pos)
         {
+            HP = 200;
+
             // 위치
             _pos = pos;
 
