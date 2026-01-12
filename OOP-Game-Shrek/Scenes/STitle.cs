@@ -29,6 +29,7 @@ namespace OOP_Game_Shrek.Scenes
         {
             ObjectManager.AddObject(new DummyObject()); //그냥 L키 받는 오브젝트추가
             ObjectManager.AddObject(new MPoop(new Pos(11, 4)));
+            ObjectManager.AddObject(new MRamen(new Pos(3, 5)));
             ObjectManager.AddPlayer(new Player(new Pos(15, 15))); //기왕이면 Player를 위로 배치하는게 렌더우선순위가 낮아서 좋음
 
         }

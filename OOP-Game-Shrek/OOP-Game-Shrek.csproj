@@ -47,6 +47,7 @@
     <Compile Include="Objects\DummyObject.cs" />
     <Compile Include="Objects\Monster.cs" />
     <Compile Include="Objects\MPoop.cs" />
+    <Compile Include="Objects\MRamen.cs" />
     <Compile Include="Objects\OTestObj.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Objects\Skills\BaseSkill.cs" />

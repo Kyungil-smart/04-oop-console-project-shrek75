@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOP_Game_Shrek.Objects
 {
-    internal class MPoop : Monster
+    internal class MRamen : Monster
     {
-        public MPoop(Pos pos)
+        public MRamen(Pos pos)
         {
             HP = 100;
 
@@ -16,11 +16,11 @@ namespace OOP_Game_Shrek.Objects
             _pos = pos;
 
             // 외형 
-            char[,] s = new char[,] { { '♨' } };
+            string[,] s = new string[,] { { "🍥", "🍥", "🍥" }, { "🍥", "👽", "🍥" }, { "🍥", "🍥", "🍥" } };
             _sprite = new Utils.Sprite(s);
 
             // 속력
-            _speed = 2;
+            _speed = 3;
 
             // 방향
             Dir = new Pos(0, 0);
@@ -28,23 +28,22 @@ namespace OOP_Game_Shrek.Objects
             // 몸박뎀쿨
             _bodyDamageCoolDown = (int)(3 * TimeManager.GAME_TPS);
 
-            _bodyDamage = 30;
-   
+            _bodyDamage = 40;
         }
 
         public override void Update()
         {
-            
+
             //Player와의 거리가 10이하가 되면 추적상태 ON 
-            if(_trackPlayer) Dir = ObjectManager.GetDirVectorToPlayer(this.Pos);
-            else if(ObjectManager.GetDistanceToPlayer(this.Pos) < 10)
+            if (_trackPlayer) Dir = ObjectManager.GetDirVectorToPlayer(this.Pos);
+            else if (ObjectManager.GetDistanceToPlayer(this.Pos) < 10)
             {
                 base._trackPlayer = true;
             }
             Move();
 
             //근데 이렇게하면 monster가 여러명을 못때려서 skill하나가 때린정보를 기억하고 개별적 쿨탐을 계산해야하는건가
-            if(_bodyDamageUsable == false)
+            if (_bodyDamageUsable == false)
             {
                 if (--_bodyDamageCalcuation == 0)
                 {
@@ -55,11 +54,10 @@ namespace OOP_Game_Shrek.Objects
             }
         }
 
-
         public override void OnCollision(BaseObject otherObj)
         {
             //플레이어 객체일경우
-            if(otherObj is Player p)
+            if (otherObj is Player p)
             {
                 if (_bodyDamageUsable)
                 {
@@ -77,6 +75,5 @@ namespace OOP_Game_Shrek.Objects
                 }
             }
         }
-
     }
 }

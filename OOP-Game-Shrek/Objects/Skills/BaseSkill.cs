@@ -11,7 +11,7 @@ namespace OOP_Game_Shrek.Objects.Skills
     {
         //데미지랑 타이머도 있어야하는데
         protected double _damage = 1;
-        protected int _lifeTime = (int)(1 * TimeManager.GAME_TPS);
+        protected int _lifeTime = (int)(0.5 * TimeManager.GAME_TPS);
 
         //스킬에 맞은 몬스터를 기록. (중복데미지 방지 + 한번에때릴수있는 몹수제한)
         protected List<BaseObject> _targets = new List<BaseObject>();
